@@ -8,6 +8,7 @@ setup(name='thumbor-custom-domain',
       packages=['custom_domain_loader'],
       install_requires=[
             "tornado>=4.1.0,<5.0.0",
+            "thumbor>=6.1.5,<7"
       ],
       url='https://github.com/dimetris/thumbor-custom-domain',
       license='MIT',

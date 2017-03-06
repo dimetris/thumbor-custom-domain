@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from tornado.concurrent import return_future
+from thumbor.loaders.http_loader import _normalize_url
 
 
 @return_future
