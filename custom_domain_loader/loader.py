@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from tornado.concurrent import return_future
 
 
 @return_future
