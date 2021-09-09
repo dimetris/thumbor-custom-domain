@@ -1,16 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from thumbor.loaders.http_loader import _normalize_url, return_contents, encode
-from thumbor.loaders.http_loader import load as load_fn
+from tornado.concurrent import return_future
+from thumbor.loaders.http_loader import _normalize_url, load_sync
 
 
-async def load(
-    context,
-    url,
-    normalize_url_func=_normalize_url,
-    return_contents_fn=return_contents,
-    encode_fn=encode,
-):
+@return_future
+def load(context, url, callback, normalize_url_func=_normalize_url):
     if not any([True for schema in ('http%3A//', 'https%3A//') if schema in url]):
         url = context.config.LOADER_CUSTOM_DOMAIN + url
-    return load_fn(context, url, normalize_url_func, return_contents_fn, encode_fn)
+    load_sync(context, url, callback, normalize_url_func)
