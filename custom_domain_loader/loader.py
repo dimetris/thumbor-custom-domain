@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 from tornado.concurrent import return_future
 from thumbor.loaders.http_loader import _normalize_url, load_sync
+from tornado.httpclient import AsyncHTTPClient
+
+AsyncHTTPClient.configure("tornado.curl_httpclient.CurlAsyncHTTPClient", max_clients=100)
 
 
 @return_future
